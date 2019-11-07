@@ -77,7 +77,7 @@ funcs = {
 @helpers.cycled
 def main():
     total_time = {}
-    data = generate_random_data(1000)
+    data = generate_random_data(5000)
 
     for k, v in funcs.items():
         if k not in total_time:
