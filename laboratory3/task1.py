@@ -1,18 +1,19 @@
 from python_helpers import helpers
 
 SEPARATOR = " "
+CHARS_TO_REMOVE = ["a"]
 
 
 @helpers.cycled
 def main():
     text = helpers.cycled_input("Enter text:", str, lambda v: len(v) > 0)
-    word_length = helpers.cycled_input("Enter word length:", int, lambda v: v > 0)
-    char_to_remove = helpers.cycled_input("Char to remove:", str, lambda v: len(v) == 1)
+    word_length = helpers.input_int("Enter word length:", helpers.natural_only)
 
     words = text.split(SEPARATOR)
     for i in range(0, len(words)):
         if len(words[i]) == word_length:
-            words[i] = words[i].replace(char_to_remove, "")
+            for char in CHARS_TO_REMOVE:
+                words[i] = words[i].replace(char, "")
 
     print("Res:", SEPARATOR.join(words))
 

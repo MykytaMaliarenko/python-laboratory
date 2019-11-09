@@ -1,6 +1,6 @@
-import helper
+from python_helpers import helpers
 
-n = helper.cycled_input("n:\n", float, lambda v: v != 0)
+n = helpers.input_float("n:\n", lambda v: v != 0)
 
 res = []
 if n == 1:

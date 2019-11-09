@@ -1,6 +1,6 @@
 import math
 import itertools
-import helpers
+from python_helpers import helpers
 
 
 class Segment:
@@ -37,7 +37,7 @@ class Triangle:
 def input_segments(segments_names: list):
     res = []
     for segment_name in segments_names:
-        length = helpers.cycled_input("Input segment {}:".format(segment_name), float, lambda v: v > 0)
+        length = helpers.input_float("Input segment {}:".format(segment_name), lambda v: v > 0)
         res.append(Segment(segment_name, length))
 
     return res
