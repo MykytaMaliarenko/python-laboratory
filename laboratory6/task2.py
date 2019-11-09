@@ -15,31 +15,26 @@ def main():
     m = helpers.input_int("m=", helpers.natural_only)
 
     matrix = []
+    array_of_neg = [0.0] * m
     i = 0
     while i < n:
-        num_of_neg = 0
+        num_of_neg = 0.0
         matrix.append([])
         j = 0
         while j < m:
             el = helpers.cycled_input("({};{})=".format(i, j), float)
             if el < 0:
                 num_of_neg += 1
+                array_of_neg[j] += 1
+
             matrix[i].append(el)
             j += 1
 
         matrix[i].append(num_of_neg)
         i += 1
 
-    i = 0
-    while i < m:
-        num_of_neg = 0
-        j = 0
-        while j < n:
-            if matrix[i][j] < 0:
-                num_of_neg += 1
-            j += 1
-        matrix[i].append(num_of_neg)
-        i += 1
+    array_of_neg.append(0)
+    matrix.append(array_of_neg)
 
     print_matrix(matrix)
 
