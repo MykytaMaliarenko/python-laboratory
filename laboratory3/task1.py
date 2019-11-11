@@ -1,3 +1,11 @@
+"""
+Видалити всі символи 'а' зі слів, довжина яких дорівнює обраної.
+"""
+
+"""
+Видалити будь-які символи зі груп символів, розбитих за SEPARATOR, довжина яких дорівнює обраної.
+"""
+
 from python_helpers import helpers
 
 SEPARATOR = " "
@@ -16,7 +24,3 @@ def main():
                 words[i] = words[i].replace(char, "")
 
     print("Res:", SEPARATOR.join(words))
-
-
-if __name__ == "__main__":
-    main()

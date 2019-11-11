@@ -1,3 +1,7 @@
+"""
+Організація циклу за допомогою оператора for
+"""
+
 from python_helpers import helpers
 
 x = helpers.input_float("x")

@@ -1,3 +1,7 @@
+"""
+Скласти програму розкладання натурального числа n на прості множники.
+"""
+
 from python_helpers import helpers
 
 n = helpers.input_float("n:\n", lambda v: v != 0)

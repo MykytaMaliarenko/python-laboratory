@@ -1,3 +1,7 @@
+"""
+Підрахувати кількість додатних серед чисел а, b, с (ввести з клавіатури).
+"""
+
 from python_helpers import helpers
 
 a = helpers.input_float("a:\n")
