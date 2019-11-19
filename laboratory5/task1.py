@@ -84,9 +84,9 @@ def main():
             total_time[k] = 0
 
         for t in data:
-            millis = int(round(time.time() * 1000))
+            millis = time.time()
             v(t)
-            total_time[k] += int(round(time.time() * 1000)) - millis
+            total_time[k] += time.time() - millis
 
     print(total_time)
 

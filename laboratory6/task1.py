@@ -1,22 +1,28 @@
 from python_helpers import helpers
 
 
+class MyList(list):
+
+    def recursive_array_input(self, n: int):
+        self.append(helpers.cycled_input("{}:".format(len(self)), float))
+        if n != 1:
+            self.recursive_array_input(n - 1)
+
+    def remove_all_zero_elements(self, i: int = 0):
+        if i != len(self):
+            if self[i] == 0:
+                self.pop(i)
+            else:
+                i += 1
+            self.remove_all_zero_elements(i)
+
+
 @helpers.cycled
 def main():
     n = helpers.cycled_input("input n:", int, lambda v: v > 0)
-    arr = []
-    i = 0
-    while i < n:
-        arr.append(helpers.cycled_input("{}:".format(i), float))
-        i += 1
-
-    i = 0
-    while i < len(arr):
-        if arr[i] == 0.0:
-            arr = arr[:i] + arr[i+1:]
-        else:
-            i += 1
-
+    arr = MyList()
+    arr.recursive_array_input(n)
+    arr.remove_all_zero_elements()
     print("res: {}", arr)
 
 
