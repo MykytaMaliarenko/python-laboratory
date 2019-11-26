@@ -3,6 +3,9 @@ import re
 import os
 
 
+FLOAT_REGEX_PATTERN = r"[+-]?([0-9]*[.])?[0-9]+"
+
+
 def input_file(file_name: str):
     with open(file_name, "x") as file:
         choice = "y"
