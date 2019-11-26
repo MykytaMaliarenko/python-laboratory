@@ -1,13 +1,32 @@
 from python_helpers import helpers
 import re
+import os
 
 
-FILE_NAME = "data.txt"
-FLOAT_REGEX_PATTERN = r"[+-]?([0-9]*[.])?[0-9]+"
+def input_file(file_name: str):
+    with open(file_name, "x") as file:
+        choice = "y"
+        while choice == "y":
+            user_input = helpers.input_string("Value: ")
+            choice = helpers.input_string("Do you want to continue?(y/n)", lambda v: v == "y" or v == "n")
+            if choice == "y":
+                file.write(user_input + "\n")
+            else:
+                file.write(user_input)
+        file.close()
 
 
 @helpers.cycled
 def main():
+    file_name = helpers.input_string("File Name: ")
+    if not os.path.isfile(file_name):
+        choice = helpers.input_string("File not found. Do you want to create it?(y/n)", lambda v: v == "y" or v == "n")
+        if choice == "n":
+            print("see you.")
+            return
+        else:
+            input_file(file_name)
+
     number_to_find = helpers.input_float("Which number you are looking for?\n")
     is_found = False
 
@@ -18,7 +37,7 @@ def main():
     negatives_sum = 0
     num_of_negatives = 0
     max_number = 0
-    with open(FILE_NAME) as file:
+    with open(file_name) as file:
         line = file.readline()
 
         while line:
@@ -42,6 +61,11 @@ def main():
             line = file.readline()
             line_num += 1
 
+    if is_found:
+        print("Number is found =)")
+    else:
+        print("Number isn't found =(")
+
     if num_of_negatives != 0:
         print("Avg. negative number:{}".format(negatives_sum / num_of_negatives))
     else:
@@ -50,11 +74,6 @@ def main():
     print("Max number:{}".format(max_number))
 
     print("Min number: {}. On line: {}".format(min_number, min_number_line + 1))
-
-    if is_found:
-        print("Yes, we have it =)")
-    else:
-        print("We are sorry, but we don't have this number =(")
 
 
 if __name__ == "__main__":
